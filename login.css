@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Background color */
+  font-family: 'Arial', sans-serif;
+}
+
+.login-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Width of the login box */
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form fields */
+}
+
+label {
+  display: block; /* Make label take full width */
+  margin-bottom: 5px; /* Space below label */
+}
+
+input {
+  width: 100%; /* Full width for input fields */
+  padding: 8px;
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+button {
+  width: 100%; /* Full width for button */
+  padding: 10px;
+  background-color: #533710; /* Button color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button */
+}
+
+button:hover {
+  background-color: #4a330f; /* Darker shade on hover */
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANTTERRA</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- SPLASH SCREEN -->
+    <div class="Splash" id="splash-screen">
+        <img src="./Img/Logoname.png" alt="Description of Image">
+        <p>"NURTURING SOIL, SAFEGUARDING PLANTS."</p>
+    </div>
+
+    <!-- MAIN SCREEN -->
+    <div id="main-content">
+        <div class="navbar">
+            <img src="./Img/scan_logo.png" alt="Logo">
+            <img src="./Img/PlantTerra.png" alt="Logo" class="name">
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> 
+        </div>
+        <div class="sliding-menu" id="slidingMenu">
+            <button>Notification</button>
+            <button>Setting</button>
+            <button>Sign in</button>
+            <button>Log out</button>
+            <button>Report</button>
+            <button>About Us</button>
+        </div>
+        <div class="box-container">
+            <div class="box1">
+                <img src="./Img/soil scanner img.png" alt="">
+                <h1>SCAN SOIL</h1>
+                <div class="button-container">
+                    <img src="./Img/Soil.png" alt="">
+                    <a href="camerasoil-scanner.html"><button class="B1">Start Scan</button></a>
+                    <button><i class='bx bx-upload'></i>Insert Image</button>
+                </div>
+                <h1 class="h2">Soil Type</h1>
+                <div class="soil-type">
+                    <div>
+                        <img src="./Img/Clay.jpg" alt="Clay" onclick="openSoilModal(this, 'Clay|Dense soil with fine particles that holds water well.|Good for plants that need high moisture retention.', [
+                            { img: '/Img/Hosta.webp', name: 'Hosta' },
+                            { img: './Img/Black Eyed Susan.jfif', name: 'Black-Eyed Susan' },
+                            { img: './Img/joe-pye-weed.webp', name: 'Joe Pye Weed' },
+                            { img: './Img/aster.jpg', name: 'Aster' }
+                        ])">
+                        <h1>Clay</h1>
+                    </div>
+                    <div>
+                        <img src="./Img/Sandy.jpg" alt="Sandy" onclick="openSoilModal(this, 'Sandy|Coarse soil with large particles, drains quickly.|Suitable for plants needing well-drained soil.', [
+                            { img: './Img/Lavender.avif', name: 'Lavender' },
+                            { img: './Img/salvia.webp', name: 'Salvia' },
+                            { img: './Img/sedum.jpg', name: 'Sedum' },
+                            { img: './Img/yarrow.jpg', name: 'Yarrow' }
+                        ])">
+                        <h1>Sandy</h1>
+                    </div>
+                    <div>
+                        <img src="./Img/Loamy.jpg" alt="Loamy" onclick="openSoilModal(this, 'Loamy|Balanced mix of sand, silt, and clay, ideal for most plants.|Supports a wide range of plant growth.', [
+                            { img: './Img/tomato.jpg', name: 'Tomato' },
+                            { img: './Img/basil.jfif', name: 'Basil' },
+                            { img: './Img/lettuce.jpg', name: 'Lettuce' },
+                            { img: './Img/marigold.jpg', name: 'Marigold' }
+                        ])">
+                        <h1>Loam</h1>
+                    </div>
+                    <div>
+                        <img src="./Img/Silt.webp" alt="Silt" onclick="openSoilModal(this, 'Silt|Fine soil with good water retention and fertility.|Great for plants needing nutrient-rich soil.', [
+                            { img: './Img/coleus.jpg', name: 'Coleus' },
+                            { img: './Img/bee balm.jpg', name: 'Bee Balm' },
+                            { img: './Img/foxglove.jpg', name: 'Foxglove' },
+                            { img: './Img/fuchsia.webp', name: 'Fuchsia' }
+                        ])">
+                        <h1>Silt</h1>
+                    </div>
+                </div>           
+            </div>                
+            <div class="box2">
+                <img src="./Img/plant scanner img.png" alt="">
+                <h1>SCAN PLANT</h1>
+                <div class="button-container">
+                    <img src="./Img/Soil.png" alt="">
+                    <a href="cameraplant-scanner.html"><button class="B1">Start Scan</button></a>
+                    <button><i class='bx bx-upload'></i>Insert Image</button>
+                </div>
+                <h1 class="h2">Diseases</h1>
+                <div class="Diseases">
+                    <img src="./Img/Blight.jpg" alt="Blight" onclick="openModal(this, 'Blight|A common plant disease caused by various pathogens.|Solution: Remove infected leaves and improve air circulation.')">
+                    <img src="./Img/Leaf spot.jpg" alt="Leaf spot" onclick="openModal(this, 'Leaf Spot|Dark spots on leaves caused by fungi or bacteria.|Solution: Use fungicides and avoid overhead watering.')">
+                    <img src="./Img/Mosaic.JPG" alt="Mosaic" onclick="openModal(this, 'Mosaic|Viral infection causing mottled leaves.|Solution: Remove infected plants and control pests.')">
+                    <img src="./Img/Wilt.webp" alt="Wilt" onclick="openModal(this, 'Wilt|Drooping leaves due to lack of water or disease.|Solution: Ensure proper watering and drainage.')">
+                    <img src="./Img/rust.webp" alt="Rust" onclick="openModal(this, 'Rust|Fungal disease that forms orange or brown pustules.|Solution: Apply fungicides and remove affected leaves.')">
+                    <img src="./Img/powdery-mildew.jpg" alt="Powdery Mildew" onclick="openModal(this, 'Powdery Mildew|Fungal growth resembling white powder.|Solution: Improve air circulation and apply fungicides.')">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PLANT MODAL -->
+    <div id="modal" class="plantmodal">
+        <div class="modal-box">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modal-image">
+            <h1 id="modal-title" class="modal-title"></h1>
+            <p id="modal-description" class="modal-description"></p>
+            <p id="modal-solution" class="modal-solution"></p>
+            <button onclick="readSoilText()">Read</button>
+        </div>
+    </div>
+
+    <!-- SOIL MODAL -->    
+    <div id="soilModal" class="soilmodal">
+        <div class="modal-box">
+            <span class="close" onclick="closeSoilModal()">&times;</span>
+            <img class="modal-content" id="soil-modal-image">
+            <h1 id="soil-modal-title" class="modal-title"></h1>
+            <p id="soil-modal-description" class="modal-description"></p>
+            <p id="soil-modal-solution" class="modal-solution"></p>
+            <button onclick="readSoilText()">Read</button>
+
+            <!-- Plant Suggestions Section -->
+            <div class="plant-suggestions">
+                <h2>Suggested Plants</h2>
+                <div class="suggestions-container">
+                    <div class="suggestion">
+                        <img src="./Img/plant1.jpg" alt="Plant 1" id="suggestion-img1">
+                        <p id="suggestion-name1">Plant 1</p>
+                    </div>
+                    <div class="suggestion">
+                        <img src="./Img/plant2.jpg" alt="Plant 2" id="suggestion-img2">
+                        <p id="suggestion-name2">Plant 2</p>
+                    </div>
+                    <div class="suggestion">
+                        <img src="./Img/plant3.jpg" alt="Plant 3" id="suggestion-img3">
+                        <p id="suggestion-name3">Plant 3</p>
+                    </div>
+                    <div class="suggestion">
+                        <img src="./Img/plant4.jpg" alt="Plant 4" id="suggestion-img4">
+                        <p id="suggestion-name4">Plant 4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./plantsoil.js"></script>
+</body>
+</html>

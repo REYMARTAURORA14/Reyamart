@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Scanner</title>
+    <!-- Include Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Style for camera view */
+        body, html {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center;     /* Center horizontally */
+            height: 100vh;          /* Full viewport height */
+            margin: 0;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        video {
+            width: 380px;   /* Set width */
+            height: 550px;  /* Set height */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10%; /* Added margin-bottom for spacing from buttons */
+        }
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: -10%;
+            width: 350px;  /* Match width of the video */
+            height: 50px;
+            padding: 10px;
+            background-color: #239e21; /* Background color for the top container */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: absolute; /* Positioning at the top */
+            top: 10%; /* Margin at the top */
+        }
+        .top-container i {
+            cursor: pointer;
+            color: white; /* Icon color */
+            font-size: 30px; /* Icon size */
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        .capture-container {
+            display: flex;
+            justify-content: space-between;
+            width: 350px;  /* Match width of the video */
+            height: 50px;
+            padding: 15px;
+            background-color: #239e21; /* Background color for the button box */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: absolute; /* Positioning at the bottom */
+            bottom: 5%; /* Margin at the bottom */
+        }
+        .capture-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: 1; /* Allow buttons to take equal space */
+            margin: 0 5px; /* Reduced margin for better alignment */
+        }
+        .cancel-btn {
+            background-color: #239e21; /* Red color */
+            color: white;
+        }
+        .done-btn {
+            background-color: #239e21; /* Green color */
+            color: white;
+        }
+        .capture-btn:hover {
+            opacity: 0.9; /* Slight hover effect */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-container">
+        <i class='bx bxs-bolt' onclick="toggleFlash()"></i> <!-- Flash icon -->
+        <i class='bx bx-grid'></i> <!-- Grid icon -->
+        <i class='bx bxs-cog' onclick="openSettings()"></i> <!-- Settings icon -->
+    </div>
+
+    <video id="cameraStream" autoplay></video>
+
+    <div class="capture-container">
+        <button class="capture-btn cancel-btn" onclick="closeScanner()">Cancel</button>
+        <button class="capture-btn" id="captureBtn">Scan</button>
+        <button class="capture-btn done-btn" onclick="doneCapturing()">Done</button>
+    </div>
+
+    <script>
+        let videoStream;
+
+        // Function to start the camera
+        function startCamera() {
+            const cameraStream = document.getElementById("cameraStream");
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    videoStream = stream;
+                    cameraStream.srcObject = stream;
+                })
+                .catch((error) => {
+                    console.error("Error accessing camera:", error);
+                    alert("Unable to access the camera.");
+                });
+        }
+
+        // Function to stop the camera and close the page
+        function closeScanner() {
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+            }
+            window.location.href = 'index.html'; // Redirect back to the main page
+        }
+
+        // Function to handle capturing an image (currently just a placeholder)
+        document.getElementById("captureBtn").addEventListener("click", function() {
+            // Capture functionality can be added here
+            alert("Capture button clicked! Implement image capturing logic.");
+        });
+
+        // Function to handle done capturing
+        function doneCapturing() {
+            alert("Done capturing! Implement your logic here.");
+            closeScanner(); // Close the scanner after done
+        }
+
+        // Toggle flash functionality (placeholder)
+        function toggleFlash() {
+            alert("Toggle flash functionality here.");
+        }
+
+        // Open settings functionality (placeholder)
+        function openSettings() {
+            alert("Open settings functionality here.");
+        }
+
+        // Start the camera when the page loads
+        window.onload = startCamera;
+        
+    </script>
+</body>
+</html>
